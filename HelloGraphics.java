@@ -23,7 +23,18 @@ class GraphicsPanel extends JPanel {
         // the Graphics object passed to this method has many methods
         // we can use to draw in the area of the panel, one of which
         // allows us to draw a String at a given x,y position
-        g.drawString("Hello, Java Graphics World!", 0, 20);
+
+        String text = "Hello, Java Graphics World!";
+        FontMetrics metrics = g.getFontMetrics(g.getFont());
+        int textWidth = metrics.stringWidth(text);
+        int textHeight = metrics.getAscent(); // Height above the baseline
+
+        int x = (getWidth() - textWidth) / 2;
+        int y = (getHeight() + textHeight) / 2;
+
+        g.drawString(text, x,y);
+        Font myFont  = new Font("Serif", Font.PLAIN, 24);
+        g.setFont(myFont);
     }
 }
 
